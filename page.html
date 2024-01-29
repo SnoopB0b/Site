@@ -112,7 +112,7 @@
         }
 
         async function getTypeIcon(typeName) {
-            const localIconPath = `C://Users//Victor//Desktop//Travail//Site//icons/${typeName}.png`;  // Utilisation de doubles slash
+            const localIconPath = `main//icons/${typeName}.png`;  // Utilisation de doubles slash
             return localIconPath;
         }
 
@@ -140,7 +140,7 @@ async function getTypeHtml(types) {
     const promises = apiData.map(async (pokemon) => {
         try {
             // Utilisez le sprite local stocké dans le dossier 'sprites'
-            const sprite = `C://Users//Victor//Desktop//Travail//Site//sprites/${pokemon.id}.png`; 
+            const sprite = `main//sprites/${pokemon.id}.png`; 
             return {
                 id: pokemon.id,
                 attack: pokemon.attack,
