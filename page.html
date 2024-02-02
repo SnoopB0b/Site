@@ -102,10 +102,11 @@
     <script>
         let currentLanguage = "en";
 
-        fetch('http://localhost:3000/api/pokemon')
-            .then(apiResponse => apiResponse.json())
-            .then(apiData => fetchPokemonDetails(apiData))
-            .catch(error => console.error('Erreur de récupération des données :', error));
+        fetch('https://immense-reef-46850-bb3fd9a2d9e9.herokuapp.com/api/pokemon')
+    .then(apiResponse => apiResponse.json())
+    .then(apiData => fetchPokemonDetails(apiData))
+    .catch(error => console.error('Erreur de récupération des données :', error));
+
 
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
@@ -242,13 +243,19 @@ function displayPokemon(pokemonData) {
         return;
     }
 
+    const bodyData = {
+        pokemon: [
+            { id, name, type1, type2, nom },
+        ],
+    };
+
     try {
-        const response = await fetch('http://localhost:3000/api/pokemon', {
+        const response = await fetch('https://immense-reef-46850-bb3fd9a2d9e9.herokuapp.com/api/pokemon', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ id, name, type1, type2, nom }),  // Ajoutez la valeur de 'nom' ici
+            body: JSON.stringify(bodyData),
         });
 
         const result = await response.json();
