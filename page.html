@@ -111,11 +111,6 @@
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
-        async function getTypeIcon(typeName) {
-            const githubIconPath = `https://raw.githubusercontent.com/SnoopB0b/Site/tree/main/icons${typeName}.png`;  // Utilisation de doubles slash
-            return githubIconPath;
-        }
-
 async function getTypeHtml(types) {
     if (!types || !Array.isArray(types)) {
         return '';
@@ -136,11 +131,17 @@ async function getTypeHtml(types) {
 
 
 
-        async function fetchPokemonDetails(apiData) {
+async function getTypeIcon(typeName) {
+    // Utilisez le chemin complet de l'image sur GitHub
+    const githubIconPath = `https://raw.githubusercontent.com/SnoopB0b/Site/main/icons/${typeName}.png`;
+    return githubIconPath;
+}
+
+async function fetchPokemonDetails(apiData) {
     const promises = apiData.map(async (pokemon) => {
         try {
-            // Utilisez le sprite local stocké dans le dossier 'sprites'
-            const sprite = `main//sprites/${pokemon.id}.png`; 
+            // Utilisez le chemin complet de l'image sur GitHub
+            const sprite = `https://raw.githubusercontent.com/SnoopB0b/Site/master/Desktop/Travail/Site/sprites/${pokemon.id}.png`; 
             return {
                 id: pokemon.id,
                 attack: pokemon.attack,
