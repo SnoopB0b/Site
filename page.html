@@ -103,7 +103,7 @@
     <script>
         let currentLanguage = "en";
 
-        fetch(/195.220.111.167:9042/api/pokemon', {referrerPolicy: "no-referrer"})
+        fetch(/195.220.111.167:9042/api/pokemon')
     .then(apiResponse => apiResponse.json())
     .then(apiData => fetchPokemonDetails(apiData))
     .catch(error => console.error('Erreur de récupération des données :', error));
